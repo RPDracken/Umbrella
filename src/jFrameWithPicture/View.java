@@ -6,7 +6,7 @@ import java.awt.*;
 
 
 public class View extends JFrame{
-	private Image imageMain;
+	private MyImage[] cargo;
 	private JLabel label1 = new JLabel();
 	private JPanel panelFrame = new JPanel();
 	private JPanel panelEast = new JPanel();
@@ -14,7 +14,8 @@ public class View extends JFrame{
 	private JPanel panelSouth = new JPanel();
 	private JPanel panelNorth = new JPanel();
 	private JPanel panelCenter = new JPanel();
-	View(final Loader l){
+	View(MyImage[] c){
+		cargo = c;
 		BorderLayout bor = new BorderLayout();
 		GridLayout grid = new GridLayout(3,1);
 		setTitle("Image Test");
@@ -30,12 +31,11 @@ public class View extends JFrame{
 		panelFrame.setLayout(bor);
 		bor.maximumLayoutSize(panelCenter);
 		//image1 = new ImageIcon(getClass().getResource("665808.jpg"));
-		imageMain = l.loadTechBaum();
-		ImageIcon imIcM = new ImageIcon(imageMain);
-		label1.setIcon(l.resize(imIcM, dim.width, dim.height));
-		ImageIcon imIcS1 = new ImageIcon(imageMain);
+		ImageIcon imIcM = new ImageIcon(cargo[0].getImage());
+		label1.setIcon(cargo[0].resize(imIcM, dim.width, dim.height));
+		ImageIcon imIcS1 = new ImageIcon(cargo[1].getImage());
 		JLabel labels = new JLabel();
-		labels.setIcon(l.resize(imIcS1, dim.width/4, dim.height/4));
+		labels.setIcon(cargo[1].resize(imIcS1, dim.width/4, dim.height/4));
 		panelSouth.add(labels);
 		panelCenter.add(bor.CENTER, label1);
 		panelFrame.add(bor.EAST, panelEast);
