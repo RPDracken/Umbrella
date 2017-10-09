@@ -16,14 +16,18 @@ public class View extends JFrame{
 	private JPanel panelCenter = new JPanel();
 	View(MyImage[] c){
 		cargo = c;
-		BorderLayout bor = new BorderLayout();
+		BorderLayout bor = new BorderLayout(20,20);
 		GridLayout grid = new GridLayout(3,1);
 		setTitle("Image Test");
 		Dimension dim = getToolkit().getScreenSize();
 		setLocation(dim.width-dim.width,dim.height/20-10);
 		setSize(dim.width/2, dim.height/2);
 		panelEast.setLayout(grid);
-		panelEast.add(new Button("click"));
+		panelEast.add(new Button("click"){
+			addActionListener(e->{
+				
+			});
+		});
 		panelEast.add(new Button("test"));
 		panelEast.add(new Button("juhu"));
 		panelEast.add(new Button("huhu"));
@@ -31,9 +35,9 @@ public class View extends JFrame{
 		panelFrame.setLayout(bor);
 		bor.maximumLayoutSize(panelCenter);
 		//image1 = new ImageIcon(getClass().getResource("665808.jpg"));
-		ImageIcon imIcM = new ImageIcon(cargo[0].getImage());
+		ImageIcon imIcM = cargo[0].getImage();
 		label1.setIcon(cargo[0].resize(imIcM, dim.width, dim.height));
-		ImageIcon imIcS1 = new ImageIcon(cargo[1].getImage());
+		ImageIcon imIcS1 = cargo[1].getImage();
 		JLabel labels = new JLabel();
 		labels.setIcon(cargo[1].resize(imIcS1, dim.width/4, dim.height/4));
 		panelSouth.add(labels);

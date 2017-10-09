@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class MyImage extends JPanel {
-	private Image Img = null;
+	private ImageIcon Img = null;
 	private String name;
 	private int namenumb;
 	
@@ -20,14 +20,14 @@ public class MyImage extends JPanel {
 		name = s;
 		namenumb = i;
 	}
-	public Image getImage(){
+	public ImageIcon getImage(){
 		return Img;
 	}
 	public void loadImage(){
 		try{
-		Img = ImageIO.read(new File((String) (name + namenumb)));
+		Img = new ImageIcon((String) (name + namenumb + ".jpg"));
 		}
-		catch (IOException e){
+		catch (Exception e){
 			e.printStackTrace();
 		}
 	}
